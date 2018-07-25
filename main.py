@@ -16,7 +16,11 @@ class Message(ndb.Model):
 
 class MainPage(webapp2.RequestHandler):
     def get(self): #for a get request
-        self.response.write('Hello, World!') #the response
+        templateVars = {
+            'messages' : messages,
+        }
+        template = env.get_template('templates/home.html')
+        self.response.write(template.render(templateVars)) #the response
 
 
 app = webapp2.WSGIApplication([
