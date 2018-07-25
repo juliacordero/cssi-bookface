@@ -16,6 +16,9 @@ class Message(ndb.Model):
 
 class MainPage(webapp2.RequestHandler):
     def get(self): #for a get request
+        message_query = Message.query() #anything that is from the message class
+        message_query = message_query.order(-Message.created_time) #puts it in reverse order
+        messages = message_query.fetch() #gets list of all messages in reverse order
         templateVars = {
             'messages' : messages,
         }
