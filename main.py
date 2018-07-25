@@ -25,9 +25,14 @@ class MainPage(webapp2.RequestHandler):
         template = env.get_template('templates/home.html')
         self.response.write(template.render(templateVars)) #the response
 
+    def post(self):
+        content = self.request.get('content')
+        name = self.request.get('name')
+        message = Message(content = content, name = name)
+        message.put()
+
 
 app = webapp2.WSGIApplication([
     ('/', MainPage), #this maps the root url to the Main Page Handler
 
 ], debug=True)
- 
