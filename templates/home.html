@@ -6,9 +6,13 @@
 
 
 <div>
-<form action='/' method='post'>
-<input name='content' value='Message Content'>
-<input name='name' value='Your name'>
-<button> Post it </button>
-</form>
+  {% for message in messages %}
+  <div class = 'message'>
+    <form action='/' method='post'>
+      <input name='content' value='Message Content'>
+      <input name='name' value='Your name'>
+    <button> Post it </button>
+    </form>
+  </div>
+  {% endfor %}
 </div>
